@@ -1,4 +1,7 @@
 package adbrix.clientbot.service;
 
-public class EventService {
+import adbrix.clientbot.web.util.EventType;
+
+public interface EventService {
+    void execute(EventType eventCode);
 }
