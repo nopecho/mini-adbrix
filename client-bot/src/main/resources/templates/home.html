@@ -14,17 +14,50 @@
         <p>버튼 click시 이벤트 발생</p>
         <div class="row g-2">
             <div style="margin: 0 auto">
-                <button class="col-5 m-2 btn btn-primary">홈페이지 접속</button>
-                <button class="col-5 m-2 btn btn-primary">로그인</button>
-                <button class="col-5 m-2 btn btn-primary">게시물 조회</button>
-                <button class="col-5 m-2 btn btn-primary">게시물 목록 조회</button>
-                <button class="col-5 m-2 btn btn-success">랜덤 이벤트</button>
+                <button class="col-5 m-2 btn btn-primary" onclick="homeEvent()">홈페이지 접속</button>
+                <button class="col-5 m-2 btn btn-primary" onclick="loginEvent()">로그인</button>
+                <button class="col-5 m-2 btn btn-primary" onclick="postEvent()">게시물 조회</button>
+                <button class="col-5 m-2 btn btn-primary" onclick="postsEvent()">게시물 목록 조회</button>
+                <button class="col-5 m-2 btn btn-success" onclick="randEvnet()">랜덤 이벤트</button>
             </div>
         </div>
     </div>
 </body>
 
 <script>
+    const homeEvent = () => {
+        fetch("http://localhost:8081/home")
+        .then(res => res.json())
+        .then(result => console.log(result))
+        .catch(e => console.log(e));
+    }
 
+    const loginEvent = () => {
+        fetch("http://localhost:8081/login")
+        .then(res => res.json())
+        .then(result => console.log(result))
+        .catch(e => console.log(e));
+    }
+
+    const postEvent = () => {
+        fetch("http://localhost:8081/post")
+        .then(res => res.json())
+        .then(result => console.log(result))
+        .catch(e => console.log(e));
+    }
+
+    const postsEvent = () => {
+        fetch("http://localhost:8081/posts")
+        .then(res => res.json())
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+    }
+
+    const randEvnet = () => {
+        fetch("http://localhost:8081/random")
+        .then(res => res.json())
+        .then(result => console.log(result))
+        .catch(e => console.log(e));
+    }
 </script>
 </html>

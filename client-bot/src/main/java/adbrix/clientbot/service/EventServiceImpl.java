@@ -1,28 +1,34 @@
 package adbrix.clientbot.service;
 
 import adbrix.clientbot.web.dto.event.Event;
+import adbrix.clientbot.web.dto.event.EventResult;
 import adbrix.clientbot.web.dto.event.prams.*;
 import adbrix.clientbot.web.dto.post.Category;
 import adbrix.clientbot.web.dto.post.Post;
 import adbrix.clientbot.web.dto.user.User;
 import adbrix.clientbot.web.util.EventType;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.Random;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class EventServiceImpl implements EventService {
 
     private final RestTemplate restTemplate;
     private final Random random = new Random();
+    private final String COLLECT_SERVER_URL = "http://localhost:8082/api/collect";
 
     @Override
-    public void execute(EventType eventType) {
-
+    public EventResult execute(EventType eventType) {
+        Event event = createEvent(eventType);
+        log.info("event 발생 ! = {}",event.getEvent());
+        return restTemplate.postForObject(COLLECT_SERVER_URL, event, EventResult.class);
     }
 
     private Event createEvent(EventType eventType){

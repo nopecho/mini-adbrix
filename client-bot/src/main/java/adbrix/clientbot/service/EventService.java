@@ -1,7 +1,8 @@
 package adbrix.clientbot.service;
 
+import adbrix.clientbot.web.dto.event.EventResult;
 import adbrix.clientbot.web.util.EventType;
 
 public interface EventService {
-    void execute(EventType eventCode);
+    EventResult execute(EventType eventCode);
 }
