@@ -2,6 +2,7 @@ package adbrix.collect.api;
 
 import adbrix.collect.api.dto.EventResult;
 import adbrix.collect.service.EventCollectService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ public class EventCollectController {
     private final EventCollectService eventCollectService;
 
     @PostMapping("/api/collect")
-    public EventResult collect(@RequestBody Object event){
+    public EventResult collect(@RequestBody Object event) throws JsonProcessingException {
         return eventCollectService.collectEvent(event);
     }
 }
