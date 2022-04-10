@@ -38,7 +38,6 @@ public class EventServiceImpl implements EventService {
                 .userId(user.getId())
                 .event(eventType)
                 .parameters(createParams(eventType.getCode(), user))
-                .createDateTime(LocalDateTime.now())
                 .build();
     }
 
