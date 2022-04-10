@@ -35,7 +35,7 @@ public class EventContoller {
 
     @GetMapping("/random")
     public EventResult randomEventHandler(){
-        return eventService.execute(EventType.RANDOM);
+        return eventService.execute(EventType.radomEvent());
     }
 }
 
