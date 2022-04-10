@@ -14,13 +14,13 @@ import org.springframework.context.annotation.Primary;
 public class AwsSqsConfig {
 
     @Value("${cloud.aws.credentials.access-key}")
-    private String accessKey;
+    private String accessKey; //aws 엑세스 키
 
     @Value("${cloud.aws.credentials.secret-key}")
-    private String secretKey;
+    private String secretKey; //aws 시크릿 키
 
     @Value("${cloud.aws.region.static}")
-    private String region;
+    private String region; //aws sqs 리전 정보
 
     /**
      * AWS 자격 증명 Bean 등록

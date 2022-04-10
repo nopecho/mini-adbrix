@@ -10,8 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventCollectService {
 
-    private final AmazonSQSService amazonSQSService;
+    private final AmazonSQSService amazonSQSService; //Amazon SQS 처리 객체
 
+    /**
+     * Event -> SQS Event 수집 메서드
+     * @param event : 수집할 event 객체
+     */
     public EventResult collectEvent(Object event) throws JsonProcessingException {
         amazonSQSService.send(event);
         return new EventResult(true);
