@@ -1,2 +1,7 @@
+##AWS 접속 정보 .yml 파일
+spring:
+  profiles:
+    include: aws
+
 server:
   port: 8082
