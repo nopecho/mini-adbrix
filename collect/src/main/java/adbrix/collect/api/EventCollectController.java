@@ -17,7 +17,6 @@ public class EventCollectController {
 
     @PostMapping("/api/collect")
     public EventResult collect(@RequestBody Object event){
-        log.info(event.toString());
-        return new EventResult(true);
+        return eventCollectService.collectEvent(event);
     }
 }
