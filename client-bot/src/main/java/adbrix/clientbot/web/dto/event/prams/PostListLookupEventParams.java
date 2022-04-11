@@ -1,7 +1,6 @@
 package adbrix.clientbot.web.dto.event.prams;
 
 import adbrix.clientbot.web.dto.post.Category;
-import adbrix.clientbot.web.dto.post.Post;
 import adbrix.clientbot.web.dto.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class PostListLookupEventParams implements EventPrams{
 
-    private Category lookupCategory;
+    private Category category;
 
     @Override
     public EventPrams makeParams(User user) {
@@ -19,7 +18,7 @@ public class PostListLookupEventParams implements EventPrams{
     }
 
     public EventPrams makeParams(){
-        this.lookupCategory = Category.radomCategory();
+        this.category = Category.radomCategory();
         return this;
     }
 }
