@@ -5,4 +5,4 @@ DATABASE = {
     'TEST_URL' : 'localhost',
     'TEST_USER_ID' : 'root',
     'TEST_USER_PASSWORD' : '1234'
-};
+}
