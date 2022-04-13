@@ -1,18 +1,19 @@
 import json
 from package import pymysql
 from package.pymysql import *
+import conf
 
-def insert_event(event, params_id):
+def insert_event(event, parameters_id):
     event_dict = json.loads(event)
 
-    conn = None
-    cur = None
-    sql = ""
-
-    conn = pymysql.connect(host="localhost", user="root", password="1234", db="test" ,charset='utf8')
+    conn = pymysql.connect(host=conf.DATABASE["URL"], user=conf.DATABASE["USER_ID"], password=conf.DATABASE["USER_PASSWORD"], db="adbrix" ,charset='utf8')
     cur = conn.cursor()
 
-    sql = "CREATE TABLE IF NOT EXISTS test_user(id char(4), user_name char(10))"
+    sql = "INSERT INTO event(event_id, user_id, event, parimeters_id) VALUES(%d, %s, %s," + parameters_id + ")" % (
+        event_dict["eventId"],
+        event_dict["userId"],
+        event_dict["event"]
+    )
     cur.execute(sql)
 
     conn.commit()
@@ -22,7 +23,7 @@ def insert_event_params(event):
     event_dict = json.loads(event)
     event_params = event_dict["parameters"]
 
-    conn = pymysql.connect(host="localhost", user="root", password="1234", db="test" ,charset='utf8')
+    conn = pymysql.connect(host=conf.DATABASE["URL"], user=conf.DATABASE["USER_ID"], password=conf.DATABASE["USER_PASSWORD"], db="adbrix" ,charset='utf8')
     cur = conn.cursor()
 
     insert_sql = "INSERT INTO parameters(connet_date_time,login_id,user_name,age,login_date_time,category,post_id,title) VALUES(%s, %s, %s, %d, %s, %s, %d, %s)" % (
